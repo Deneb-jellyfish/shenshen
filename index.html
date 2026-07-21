@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>深闺极限二选一歌单</title>
+  <meta name="description" content="64 强歌曲互动对阵小网页，支持手机端点击晋级、三次重抽分组与冠军弹窗展示。">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero-card">
+      <div class="hero-copy">
+        <p class="eyebrow">Healing Tournament Playlist</p>
+        <h1>深闺极限二选一歌单</h1>
+        <p class="hero-text">
+          把 64 首心动歌曲排进一场柔软又热闹的治愈系比赛吧。
+          点一点就能晋级，分组最多可以重抽 3 次，决出冠军时还会弹出专属展示卡。
+        </p>
+        <div class="hero-actions">
+          <button id="shuffleButton" class="primary-button" type="button">重抽分组</button>
+          <button id="resetButton" class="ghost-button" type="button">重新开始</button>
+        </div>
+      </div>
+      <div class="hero-illustration" aria-hidden="true">
+        <div class="cloud cloud-a"></div>
+        <div class="cloud cloud-b"></div>
+        <div class="disc disc-a"></div>
+        <div class="disc disc-b"></div>
+        <div class="spark spark-a"></div>
+        <div class="spark spark-b"></div>
+        <div class="spark spark-c"></div>
+      </div>
+    </header>
+
+    <section class="status-grid" aria-label="比赛状态">
+      <article class="status-card">
+        <span class="status-label">分组重抽</span>
+        <strong id="shuffleRemain">还剩 3 次</strong>
+        <p>重抽会重新洗牌 64 强对阵，同时清空当前晋级结果。</p>
+      </article>
+      <article class="status-card">
+        <span class="status-label">当前进度</span>
+        <strong id="progressText">还没开始，先点一首喜欢的歌吧</strong>
+        <p>每个对阵卡片点中一首歌，就会自动晋级到下一轮。</p>
+      </article>
+      <article id="championCard" class="status-card champion-card" role="button" tabindex="0" aria-label="查看冠军展示">
+        <span class="status-label">冠军席位</span>
+        <strong id="championName">等待诞生</strong>
+        <p id="championHint">冠军出现后会自动弹窗，并尝试联网搜索歌曲封面。</p>
+      </article>
+    </section>
+
+    <section class="tips-card" aria-label="玩法说明">
+      <div>
+        <h2>玩法说明</h2>
+        <p>横向滑动查看不同轮次，手机上也能顺手操作。你随时可以回头改票，后面的晋级链路会自动更新。</p>
+      </div>
+      <div class="tip-pills">
+        <span>64 强开赛</span>
+        <span>点击即可晋级</span>
+        <span>支持回改结果</span>
+        <span>冠军弹窗展示</span>
+      </div>
+    </section>
+
+    <main>
+      <section class="bracket-board" aria-label="歌曲对阵树">
+        <div id="roundsContainer" class="rounds-container"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="championDialog" class="champion-dialog">
+    <button id="closeDialogButton" class="dialog-close" type="button" aria-label="关闭冠军弹窗">关闭</button>
+    <div class="dialog-body">
+      <div class="dialog-cover-shell">
+        <img
+          id="championCover"
+          class="dialog-cover"
+          alt="冠军歌曲封面"
+          src=""
+          hidden
+        >
+        <div id="coverFallback" class="cover-fallback" aria-hidden="true">
+          <span>♪</span>
+        </div>
+      </div>
+      <div class="dialog-copy">
+        <p class="eyebrow">Champion Song</p>
+        <h2 id="dialogTitle">冠军诞生</h2>
+        <p id="dialogArtist" class="dialog-artist">正在搜索封面与曲目信息...</p>
+        <p id="dialogDescription" class="dialog-description">
+          这一首已经在你的歌单比赛里拿下第一名。
+        </p>
+        <p class="dialog-note">封面来自联网搜索结果；如果没搜到，就会展示插画占位卡。</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="./app.js"></script>
+</body>
+</html>
