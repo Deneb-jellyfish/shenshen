@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "node build.mjs"
+  },
   "name": "healing-song-tournament",
   "private": true,
   "version": "1.0.0"
