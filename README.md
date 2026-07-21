@@ -22,7 +22,7 @@ py -3 -m http.server 4173
 
 ## GitHub Pages
 
-这个项目不需要构建，推到 GitHub 仓库后：
+这个项目不需要构建，直接用 `main` 分支根目录发布即可：
 
 1. 进入仓库 `Settings`
 2. 打开 `Pages`
